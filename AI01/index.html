@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>수업 교안</title>
+<style>
+:root{--ink:#233a36;--accent:#357b68;--paper:#fffef9}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:#edf1ec;font-family:"맑은 고딕","Apple SD Gothic Neo",sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;color:inherit;background:transparent;border:1px solid #d6dfd6;border-radius:9px;padding:9px 14px}button:hover{background:#e4ece3}button:disabled{opacity:.3;cursor:default}button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}header{height:68px;background:var(--paper);border-bottom:1px solid #dde4db;display:flex;align-items:center;justify-content:space-between;padding:0 24px;gap:12px}.brand{display:flex;align-items:center;gap:20px}.brand strong{font-size:15px;font-weight:600}#toggle{display:flex;align-items:center;gap:10px;font-size:14px}#toggle svg{width:18px;height:18px}.layout{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:calc(100dvh - 68px)}.layout.closed{grid-template-columns:minmax(0,1fr)}aside{padding:34px 18px;background:#f7f9f3;border-right:1px solid #dce4d9}aside[hidden]{display:none}.caption{margin:0 14px 26px;font-size:11px;color:#78897d;letter-spacing:.16em}nav{display:grid;gap:9px}nav a{display:flex;align-items:baseline;gap:13px;padding:16px 14px;border:1px solid transparent;border-radius:10px;color:#6f7d72;text-decoration:none;line-height:1.7;font-size:14px;word-break:keep-all}nav a:hover{background:#edf2e9}nav a[aria-current="page"]{color:var(--ink);background:#e5eee2;border-color:#d6e2d1;font-weight:600}.number{color:var(--accent);font-size:11px;font-weight:500}main{min-width:0;padding:28px;display:flex;flex-direction:column}.page{position:relative;background:var(--paper);border:1px solid #e0e6dc;border-radius:12px;min-height:calc(100dvh - 160px);box-shadow:0 8px 30px #233a3604}.page[hidden]{display:none}.topic{margin:0;padding:22px 26px;color:#7c8a7e;font-size:12px;font-weight:400;text-align:right;line-height:1.7;word-break:keep-all}.blank{padding:24px;min-height:50vh}footer{margin-top:auto;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#829082}.controls{display:flex;gap:7px}.controls button{padding:7px 12px;font-size:12px}#fullscreen{font-size:12px}@media(max-width:760px){.layout{grid-template-columns:230px minmax(0,1fr)}aside{padding:26px 10px}nav a{padding:12px 10px;font-size:13px;gap:9px}main{padding:14px}.topic{padding:18px;font-size:11px}.page{min-height:calc(100dvh - 135px)}header{padding:0 14px}.brand{gap:12px}.brand strong{font-size:13px}}@media(max-width:520px){.layout{display:block}aside{position:absolute;left:0;top:68px;bottom:0;width:270px;z-index:3;box-shadow:10px 0 30px #233a3614;overflow:auto}.topic{padding-left:40px}.brand strong{display:none}}@media print{header,aside,footer{display:none}.layout,.layout.closed{display:block}main{padding:0}.page,.page[hidden]{display:block;border:0;box-shadow:none;min-height:95vh;break-after:page}}
+</style>
+</head>
+<body>
+<header><div class="brand"><button id="toggle" aria-expanded="true" aria-controls="sidebar" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>목차</button><strong>수업 교안</strong></div><button id="fullscreen" type="button">전체 화면</button></header>
+<div class="layout" id="layout">
+<aside id="sidebar"><p class="caption">CONTENTS · 목차</p><nav aria-label="교안 목차">
+<a href="#1"><span class="number">01</span><span>시작하기</span></a>
+<a href="#2"><span class="number">02</span><span>도입 및 실습 환경 세팅</span></a>
+<a href="#3"><span class="number">03</span><span>데이터 분할 및 체크박스 출석부 구축</span></a>
+<a href="#4"><span class="number">04</span><span>다중 시트 데이터 대조 및 조건부 서식 (결제 관리)</span></a>
+</nav></aside>
+<main>
+<!-- 각 페이지의 blank 영역에 교안 내용을 추가하세요. -->
+<section class="page" aria-labelledby="topic1"><h1 class="topic" id="topic1">시작하기</h1><div class="blank"></div></section>
+<section class="page" aria-labelledby="topic2" hidden><h1 class="topic" id="topic2">도입 및 실습 환경 세팅</h1><div class="blank"></div></section>
+<section class="page" aria-labelledby="topic3" hidden><h1 class="topic" id="topic3">데이터 분할 및 체크박스 출석부 구축</h1><div class="blank"></div></section>
+<section class="page" aria-labelledby="topic4" hidden><h1 class="topic" id="topic4">다중 시트 데이터 대조 및 조건부 서식 (결제 관리)</h1><div class="blank"></div></section>
+<footer><span id="count" aria-live="polite"></span><div class="controls"><button id="prev" type="button">← 이전</button><button id="next" type="button">다음 →</button></div></footer>
+</main></div>
+<script>
+const pages=[...document.querySelectorAll('.page')],links=[...document.querySelectorAll('nav a')];const sidebar=document.getElementById('sidebar'),toggle=document.getElementById('toggle'),layout=document.getElementById('layout');let current=0;
+function setSidebar(open){sidebar.hidden=!open;layout.classList.toggle('closed',!open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'목차 닫기':'목차 열기')}
+toggle.onclick=()=>setSidebar(sidebar.hidden);
+function render(){const n=Number(location.hash.slice(1));current=Number.isInteger(n)&&n>=1&&n<=pages.length?n-1:0;pages.forEach((p,i)=>p.hidden=i!==current);links.forEach((a,i)=>{if(i===current)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});document.getElementById('count').textContent=`${current+1} / ${pages.length}`;document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===pages.length-1;document.title=pages[current].querySelector('h1').textContent+' | 수업 교안'}
+function move(d){location.hash=String(Math.max(0,Math.min(pages.length-1,current+d))+1)}
+links.forEach(a=>a.addEventListener('click',()=>{if(matchMedia('(max-width:520px)').matches){setSidebar(false);toggle.focus()}}));document.getElementById('prev').onclick=()=>move(-1);document.getElementById('next').onclick=()=>move(1);
+document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.isContentEditable)return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();move(1)}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();move(-1)}if(e.key==='Escape'&&!sidebar.hidden){setSidebar(false);toggle.focus()}});
+const fs=document.getElementById('fullscreen');if(!document.fullscreenEnabled)fs.hidden=true;fs.onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch{fs.textContent='전체 화면 불가'}};document.addEventListener('fullscreenchange',()=>fs.textContent=document.fullscreenElement?'전체 화면 종료':'전체 화면');window.addEventListener('hashchange',render);setSidebar(!matchMedia('(max-width:520px)').matches);render();
+</script>
+</body>
+</html>
